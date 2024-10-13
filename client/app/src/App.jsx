@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import BooksContainer from './components/BooksContainer.jsx';
 
 const App = ()  => {
   const [books, setBooks] = useState([]);
@@ -43,7 +44,9 @@ const App = ()  => {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
-    addBook(); 
+    addBook({ title, year }); 
+    setTitle(""); 
+    setYear(0);
   };
 
   return (
@@ -60,14 +63,7 @@ const App = ()  => {
         onChange={(e) => setYear(Number(e.target.value))} />
         <button type="submit">Add book</button>
       </form>
-      <div className='booksContainer'>
-        {books.map((book) => (
-          <div key={book.id} className='book'>
-            <p>Title: {book.title}</p>
-            <p>Year: {book.year}</p>
-          </div>
-        ))}
-      </div>
+      <BooksContainer books={books} />
     </div>
   )
 }
