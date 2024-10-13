@@ -35,7 +35,7 @@ const App = ()  => {
         body: JSON.stringify(bookData),
       });
       const data = await response.json();
-      console.log(data);
+      setBooks(prev => [...prev, data]);
     } catch(error) {
       console.log(error);
     }
