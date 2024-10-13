@@ -1,0 +1,28 @@
+.App {
+  background-color: rgb(33, 33, 33);
+  color: rgb(82, 154, 243);
+  padding: 20px;
+  width: 100vw;
+  min-height: 100vh;
+
+  .booksContainer {
+    background-color: rgb(82, 154, 243);
+    width: 80vw;
+    margin: 0 auto;
+    min-height: 400px;
+    color: rgb(33, 33, 33);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .book {
+    background-color: rgb(33, 33, 33);;
+    width: 600px;
+    color: rgb(230, 231, 245);
+    padding: 20px;
+  }
+}
