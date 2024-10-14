@@ -2,7 +2,12 @@ import React from 'react';
 import { useBooks } from './BookContext';
 
 const BooksContainer = () => {
-  const { newTitle, setNewTitle, updateTitle, books } = useBooks(); 
+  const { setNewTitle, updateTitle, books } = useBooks(); 
+
+  const handleUpdate = (bookId, year) => {
+    updateTitle(bookId, year);
+    setNewTitle(""); 
+  };
 
   return (
     <div className="booksContainer">
@@ -13,10 +18,9 @@ const BooksContainer = () => {
           <input 
             type="text" 
             placeholder="New Title..." 
-            value={newTitle} 
             onChange={(e) => setNewTitle(e.target.value)} 
           />
-          <button onClick={() => updateTitle(book.id, book.year)}>
+          <button onClick={() => handleUpdate(book.id, book.year)}>
             Change Title
           </button>
         </div>
