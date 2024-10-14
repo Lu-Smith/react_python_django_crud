@@ -7,6 +7,8 @@ export const useBooks = () => useContext(BookContext);
 export const BookProvider = ({ children }) => {
   const [books, setBooks] = useState([]); 
   const [newTitle, setNewTitle] = useState("");
+  const [title, setTitle] = useState("");
+  const [year, setYear] = useState(1950);
 
   useEffect(() => {
     fetchBooks();
@@ -38,6 +40,7 @@ export const BookProvider = ({ children }) => {
       console.log(error);
     }
   };
+  
 
   return (
     <BookContext.Provider
@@ -46,7 +49,11 @@ export const BookProvider = ({ children }) => {
         setNewTitle,
         updateTitle,
         books,       
-        setBooks
+        setBooks,
+        title, 
+        setTitle,
+        year, 
+        setYear
       }}
     >
       {children}
