@@ -2,7 +2,7 @@ import React from 'react';
 import { useBooks } from './BookContext';
 
 const BooksContainer = () => {
-  const { setNewTitle, updateTitle, books } = useBooks(); 
+  const { setNewTitle, updateTitle, books, deleteBook } = useBooks(); 
 
   const handleUpdate = (bookId, year) => {
     updateTitle(bookId, year);
@@ -22,6 +22,9 @@ const BooksContainer = () => {
           />
           <button onClick={() => handleUpdate(book.id, book.year)}>
             Change Title
+          </button>
+          <button onClick={() => deleteBook(book.id)}>
+            Delete
           </button>
         </div>
       ))}
