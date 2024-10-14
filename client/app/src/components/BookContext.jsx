@@ -40,6 +40,18 @@ export const BookProvider = ({ children }) => {
       console.log(error);
     }
   };
+
+  const deleteBook = async (pk) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/books/${pk}`, {
+        method: "DELETE"
+      });
+      
+      setBooks(prev => prev.filter((book) => book.id !== pk));
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
 
   return (
@@ -53,7 +65,8 @@ export const BookProvider = ({ children }) => {
         title, 
         setTitle,
         year, 
-        setYear
+        setYear,
+        deleteBook
       }}
     >
       {children}
