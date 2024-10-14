@@ -4,7 +4,8 @@ import BooksContainer from './components/BooksContainer';
 import { useBooks } from './components/BookContext';
 
 const App = ()  => {
-  const { books, setBooks } = useBooks();
+
+  const { setBooks } = useBooks();  
 
   const [title, setTitle] = useState("");
   const [year, setYear] = useState(1950);
