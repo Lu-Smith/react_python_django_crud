@@ -1,26 +1,13 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './App.css';
-import BooksContainer from './components/BooksContainer.jsx';
+import BooksContainer from './components/BooksContainer';
+import { useBooks } from './components/BookContext';
 
 const App = ()  => {
-  const [books, setBooks] = useState([]);
+  const { books, setBooks } = useBooks();
+
   const [title, setTitle] = useState("");
   const [year, setYear] = useState(1950);
-
-  useEffect(() => {
-    fetchBooks();
-  }, [])
-
-  const fetchBooks = async () => {
-    try {
-      const response = await fetch("http://127.0.0.1:8000/api/books/");
-      const data = await response.json();
-      setBooks(data);
-    }
-    catch(error) {
-      console.log(error);
-    } 
-  };
 
   const addBook = async () => {
     const bookData = {
@@ -63,7 +50,7 @@ const App = ()  => {
         onChange={(e) => setYear(Number(e.target.value))} />
         <button type="submit">Add book</button>
       </form>
-      <BooksContainer books={books} />
+      <BooksContainer />
     </div>
   )
 }
